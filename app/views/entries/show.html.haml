@@ -1,0 +1,8 @@
+=link_to 'Edit this entry', edit_entry_path(@entry)
+=link_to 'Delete this entry', entry_path(@entry), method: :delete
+%h2
+  =@entry.title
+%p
+  =@entry.user.email
+%p
+  =@entry.content

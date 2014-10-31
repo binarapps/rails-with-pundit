@@ -1,0 +1,14 @@
+%ul
+  -@entries.each do |entry|
+    %li
+      %ol
+        %li
+          %h4
+            =entry.title
+        %li
+          =entry.user.email
+        %li
+          %p
+            =entry.content
+
+
