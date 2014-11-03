@@ -1,7 +1,9 @@
-%ul
+-if current_user
+  =link_to 'Add new entry', new_entry_path
+%ol
   -@entries.each do |entry|
     %li
-      %ol
+      %ul
         %li
           %h4
             =entry.title
@@ -10,5 +12,7 @@
         %li
           %p
             =entry.content
+        %li
+          =link_to 'show', entry_path(entry)
 
 
