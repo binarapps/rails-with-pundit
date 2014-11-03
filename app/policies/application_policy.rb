@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    check_if_admin(@user) || available_to_show?(@user, @record) && scope.where(:id => record.id).exists?
+    check_if_admin(@user) || available_to_show?(@user, @record)
   end
 
   def create?
@@ -38,22 +38,4 @@ class ApplicationPolicy
     return false unless user
     user.admin?
   end
-
-  def scope
-    Pundit.policy_scope!(user, record.class)
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope
-    end
-  end
 end
-
